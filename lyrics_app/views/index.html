@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"></script>
+    <title>Lyrics scrapping app</title>
+</head>
+<body>
+     <div class="container-fluid ">
+         <br>
+         <div class="text-center col-md-12">
+         <h1 class="text-center">Lyrics scrapping app</h1>   <br><br>
+         <input type="text" id="query" >
+         <button type="button" class="btn btn-success " onclick="search()">Search</button>
+        </div>
+
+        <div class="col-md-12 text-center"> <br>
+            <pre id="lyrics">text will come here</pre> <br>
+            <p></p>
+        </div>
+     </div>
+</body>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script>
+      function search()
+      {
+          var query=$('#query').val();
+          $.get('./getmusic/'+query,function(data,status){
+              if(data.length<3)
+              {
+                  $('#lyrics').text("Lyrics not found : ");
+              }
+              else
+              {
+                  console.log(status);
+                  $('#lyrics').text(data);
+              }
+          })
+      }
+     </script>
+</html>
